@@ -2,7 +2,7 @@
 
 The eu­ropass class is LaTeX im­ple­men­ta­tion of the  (the "Europass CV") as rec­om­mended by the Euro­pean Com­mis­sion.
 
-## How to install on *nix
+## How to install on Linux
 
 ```sh
 git clone https://github.com/tprasadtp/europass-cv.git
@@ -18,7 +18,7 @@ Provides class `europass-cv` and `coveletter`. See examples for more info.
 ```
 
 ## License
-This is a derived work under the terms of the LaTeX project public license (LPPL). It is based on version 2014-06-27 of europecv.cls which is part of the europecv package by Nicola Vitacolonna. A copy of europecv, including the unmodified version of europecv.cls is available  from http://www.ctan.org/tex-archive/macros/latex/contrib/europecv. under LPPL. For icons see [icons](#icons-and-license)
+This is a derived work under the terms of the LaTeX project public license (LPPL). It is based  europecv.cls which is part of the europecv package by Nicola Vitacolonna. A copy of europecv, including the unmodified version of europecv.cls is available  from http://www.ctan.org/tex-archive/macros/latex/contrib/europecv. under LPPL. For icons see [icons](#icons-and-license)
 
 ## Based on
 `https://ctan.org/tex-archive/macros/latex/contrib/europecv`
