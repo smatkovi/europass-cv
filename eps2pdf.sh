@@ -15,7 +15,7 @@ if [[ $count_files = "0" ]]; then
   exit 1;
 fi
 index=1
-if command -v rsync >&/dev/null; then
+if command -v epspdf >&/dev/null; then
   for file in *.eps;
   do
     file_name=$(echo "$file" | cut -d '.' -f1 )
