@@ -28,3 +28,6 @@ This is a derived work under the terms of the LaTeX project public license (LPPL
 * Icons are made by Freepik from www.flaticon.com under
 [Flaticon Basic License](https://file000.flaticon.com/downloads/license/license.pdf).
 * If for some reason icons do not render, use PNG icons in the png directory.
+
+
+[![Analytics](https://ga-beacon.prasadt.com/UA-101760811-3/github/europass-cv?flat)](https://prasadt.com/google-analytics-beacon)
