@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC2059
+YELLOW=$(tput setaf 3)
+BLUE=$(tput setaf 6)
+#RED=$(tput setaf 1)
+NC=$(tput sgr 0)
+
+function convert_eps_files()
+{
+  if [ -e eps2pdf.sh ]; then
+    sh -c "./eps2pdf.sh"
+  else
+    printf "File eps2pdf.sh is missing. Did you clone the repository properly?\n"
+    exit 1;
+  fi
+}
+
+function copy_files()
+{
+  readonly TEX_DIR="/home/$USER/texmf/tex/latex/europass-cv"
+  mkdir -p "$TEX_DIR"
+  if command -v rsync >&/dev/null; then
+    printf "${BLUE}Copying files to ${YELLOW} ${TEX_DIR}...${NC}\n"
+    rsync -Ea --recursive --exclude='*.md*' --exclude='*.MD*' ./ "${TEX_DIR}" && printf "${YELLOW}[ INFO ]${NC} Copied Files.\n"
+  else
+    printf "${YELLOW}Program rsync is not installed. Please install rsync.\nThis script requires rsync.\n${NC}";
+  exit 1;
+  fi
+}
+
+function main ()
+{
+  convert_eps_files
+  copy_files
+  printf "${BLUE}Updating Texhash...${NC}\n"
+  texhash $TEX_DIR
+}
+
+main "$@"
