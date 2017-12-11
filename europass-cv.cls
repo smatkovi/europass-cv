@@ -471,6 +471,13 @@ $\begin{array}{@{}l}\includegraphics[width=\ecv@iconwidth]{ic_stackoverflow}\end
  #5}
 }
 
+\newcommand{\ecvproject}[5][30pt]{%
+ \ecvitem[#1]{#2}{\begin{Large}\textcolor{torea-bay}{#3}\end{Large}
+ \par\vspace{3pt}
+ #4{\par\vspace{3pt}}
+ #5}
+}
+
 \newif\if@ecvitemstar
 \newcommand\ecvitem{\@ifstar{\@ecvitemstartrue \@ecvitem}%
   {\@ecvitemstarfalse\@ecvitem}}
