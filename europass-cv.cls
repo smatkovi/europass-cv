@@ -133,7 +133,7 @@
 \RequirePackage{longtable}
 \RequirePackage{fancyhdr} % for page numbering
 \RequirePackage[overload]{textcase}
-\RequirePackage[bookmarks=false,colorlinks=true,urlcolor=navyblue]{hyperref}
+%%\RequirePackage[bookmarks=false,colorlinks=true,urlcolor=navyblue]{hyperref}
 \RequirePackage{amssymb} % for $\blacksquare$ symbol
 \RequirePackage{enumitem} % for removing item indentation
 

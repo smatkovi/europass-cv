@@ -16,7 +16,20 @@ Provides class `europass-cv` and `coveletter`. See examples for more info.
 ```tex
 \documentclass[english,logo,notitle,totpages,utf8]{europass-cv}
 ```
-
+## Use with hyperref
+For use with hyperref to include file metadata and to hide bookmarks and links use hyperref.
+```tex
+\usepackage[pdftex,
+pdfauthor={Prasad Tengse},
+pdftitle={Title},
+pdfsubject={Subject},
+pdfkeywords={keywords},
+pdfproducer={Latex with hyperref on TeXstudio / Travis},
+pdfcreator={pdflatex},
+bookmarks=false,
+colorlinks=true,
+urlcolor=navyblue]{hyperref}
+```
 ## License
 This is a derived work under the terms of the LaTeX project public license (LPPL). It is based  europecv.cls which is part of the europecv package by Nicola Vitacolonna. A copy of europecv, including the unmodified version of europecv.cls is available  from http://www.ctan.org/tex-archive/macros/latex/contrib/europecv. under LPPL. For icons see [icons](#icons-and-license)
 
