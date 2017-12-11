@@ -4,7 +4,7 @@ YELLOW=$(tput setaf 3)
 BLUE=$(tput setaf 6)
 #RED=$(tput setaf 1)
 NC=$(tput sgr 0)
-
+readonly TEX_DIR="/home/$USER/texmf/tex/latex/europass-cv"
 function convert_eps_files()
 {
   if [ -e eps2pdf.sh ]; then
@@ -17,7 +17,6 @@ function convert_eps_files()
 
 function copy_files()
 {
-  readonly TEX_DIR="/home/$USER/texmf/tex/latex/europass-cv"
   mkdir -p "$TEX_DIR"
   if command -v rsync >&/dev/null; then
     printf "${BLUE}Copying files to ${YELLOW} ${TEX_DIR}...${NC}\n"
