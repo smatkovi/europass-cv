@@ -3,8 +3,6 @@
 The eu­ropass class is LaTeX im­ple­men­ta­tion of the  (the "Europass CV") as rec­om­mended by the Euro­pean Com­mis­sion.
 
 
-## Branches
-compact branch is same as master but is more compact layout than master.
 ## How to install on Linux
 
 ```sh
@@ -19,6 +17,14 @@ Provides class `europass-cv` and `coveletter`. See examples for more info.
 ```tex
 \documentclass[english,logo,notitle,totpages,utf8]{europass-cv}
 ```
+
+> Use for europass-cv-compact layout
+
+```tex
+\documentclass[english,logo,notitle,totpages,utf8]{europass-cv-compact}
+```
+
+
 ## Use with hyperref
 For use with hyperref to include file metadata and to hide bookmarks and links use hyperref.
 ```tex
