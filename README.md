@@ -2,6 +2,9 @@
 
 The eu­ropass class is LaTeX im­ple­men­ta­tion of the  (the "Europass CV") as rec­om­mended by the Euro­pean Com­mis­sion.
 
+
+## Branches
+compact branch is same as master but is more compact layout than master.
 ## How to install on Linux
 
 ```sh
