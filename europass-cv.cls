@@ -470,11 +470,11 @@ $\begin{array}{@{}l}\includegraphics[width=\ecv@iconwidth]{ic_stackoverflow}\end
  #4{\par\vspace{3pt}}
  #5}
 }
-
+%project section same as ecveducation
 \newcommand{\ecvproject}[5][30pt]{%
  \ecvitem[#1]{#2}{\begin{Large}\textcolor{torea-bay}{#3}\end{Large}
  \par\vspace{3pt}
- #4{\par\vspace{3pt}}
+ #4{\par\vspace{1pt}}
  #5}
 }
 
