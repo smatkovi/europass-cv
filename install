@@ -4,6 +4,7 @@ YELLOW=$(tput setaf 3)
 BLUE=$(tput setaf 6)
 #RED=$(tput setaf 1)
 NC=$(tput sgr 0)
+set -e
 readonly TEX_DIR="/home/$USER/texmf/tex/latex/europass-cv"
 function convert_eps_files()
 {
@@ -29,6 +30,13 @@ function copy_files()
 
 function main ()
 {
+  if [ $# -eq 0 ]; then
+    printf "\n${YELLOW}No arguments found. Chosing master branch.\n${NC}"
+    git checkout master
+  else
+    printf "\n${YELLOW}Chosing branch: ${1} \n${NC}"
+    git checkout "$1"
+  fi
   convert_eps_files
   copy_files
   printf "${BLUE}Updating Texhash...${NC}\n"
