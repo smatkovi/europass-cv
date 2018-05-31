@@ -4,8 +4,7 @@ YELLOW=$(tput setaf 3)
 BLUE=$(tput setaf 6)
 #RED=$(tput setaf 1)
 NC=$(tput sgr 0)
-set -e
-readonly TEX_DIR="/home/$USER/texmf/tex/latex/"
+readonly TEX_DIR="/home/$USER/texmf/tex/latex"
 function convert_eps_files()
 {
   if [ -e eps2pdf.sh ]; then
@@ -21,9 +20,9 @@ function copy_files()
   mkdir -p "$TEX_DIR"
   if command -v rsync >&/dev/null; then
     printf "${BLUE}Copying files to ${YELLOW} ${TEX_DIR}/europass-cv...${NC}\n"
-    rsync -Ea --recursive --exclude='*.md*' --exclude='*.MD*' --exclude europass-cv-compact.cls ./ "${TEX_DIR}/europass-cv" && printf "${YELLOW}[ INFO ]${NC} Copied Files.\n"
+    rsync -Ea --recursive --exclude='*.md*' --exclude='*.MD*' --exclude='*.git*' --exclude='*.gitignore' --exclude europass-cv-compact.cls ./ "${TEX_DIR}/europass-cv" && printf "${YELLOW}[ INFO ]${NC} Copied Files.\n"
     printf "${BLUE}Copying files to ${YELLOW} ${TEX_DIR}/europass-cv-compact...${NC}\n"
-    rsync -Ea --recursive --exclude='*.md*' --exclude='*.MD*' --exclude europass-cv.cls ./ "${TEX_DIR}/europass-cv-compact" && printf "${YELLOW}[ INFO ]${NC} Copied Files.\n"
+    rsync -Ea --recursive --exclude='*.md*' --exclude='*.MD*' --exclude='*.git' --exclude='*.gitignore' --exclude europass-cv.cls ./ "${TEX_DIR}/europass-cv-compact" && printf "${YELLOW}[ INFO ]${NC} Copied Files.\n"
 
   else
     printf "${YELLOW}Program rsync is not installed. Please install rsync.\nThis script requires rsync.\n${NC}";
@@ -48,7 +47,7 @@ function main ()
   convert_eps_files
   copy_files
   printf "${BLUE}Updating Texhash...${NC}\n"
-  texhash $TEX_DIR
+  texhash "$TEX_DIR"
 }
 
 main "$@"

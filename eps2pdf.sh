@@ -15,12 +15,12 @@ if [[ $count_files = "0" ]]; then
   exit 1;
 fi
 index=1
-if command -v epspdf >&/dev/null; then
+if command -v epstopdf >&/dev/null; then
   for file in *.eps;
   do
     file_name=$(echo "$file" | cut -d '.' -f1 )
     printf "Converting File $index : ${BLUE}${file}${NC} \n"
-    epspdf "$file" "$file_name"-eps-converted-to.pdf
+    epstopdf "$file" --outfile "$file_name"-eps-converted-to.pdf
   	index=$((index + 1))
   done
 else
