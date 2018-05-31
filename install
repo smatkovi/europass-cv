@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2059
+set -e
 YELLOW=$(tput setaf 3)
 BLUE=$(tput setaf 6)
 #RED=$(tput setaf 1)
@@ -7,8 +8,14 @@ NC=$(tput sgr 0)
 readonly TEX_DIR="/home/$USER/texmf/tex/latex"
 function convert_eps_files()
 {
+  local exit_status
   if [ -e eps2pdf.sh ]; then
     sh -c "./eps2pdf.sh"
+    exit_status=$?
+    if [ $exit_status -ne 0 ]; then
+      printf "Some error occured."
+      exit 2;
+    fi
   else
     printf "File eps2pdf.sh is missing. Did you clone the repository properly?\n"
     exit 1;
@@ -48,6 +55,8 @@ function main ()
   copy_files
   printf "${BLUE}Updating Texhash...${NC}\n"
   texhash "$TEX_DIR"
+  printf "${BLUE}Removing generated PDF files...${NC}\n"
+  rm -f *converted-to.pdf
 }
 
 main "$@"
