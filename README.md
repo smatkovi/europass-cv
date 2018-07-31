@@ -53,6 +53,10 @@ This is a derived work under the terms of the LaTeX project public license (LPPL
 
 `https://ctan.org/tex-archive/macros/latex/contrib/europecv`
 
+## Windows
+Place the files in
+C:\Users\<user name>\Appdata\Local\MikTex\<number>\tex\latex\local\
+
 ## Icons and license
 
 * Icons are made by Freepik from www.flaticon.com under [Flaticon Basic License](https://file000.flaticon.com/downloads/license/license.pdf).
