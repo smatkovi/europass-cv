@@ -150,10 +150,10 @@
 \ecvpage{\ecv@pagekey~\thepage\ecv@totpages}
 
 % Page number
-\def\ecv@lfoot{%
-  \textcolor{curious-blue}{\footnotesize\textrm{\ecv@page~-~\ecv@cvofkey}\\
-  \textrm{\ecv@footername}}
-}
+%\def\ecv@lfoot{%
+%  \textcolor{curious-blue}{\footnotesize\textrm{\ecv@page~-~\ecv@cvofkey}\\
+%  \textrm{\ecv@footername}}
+%}
 
 % Right Footnote to be shown on every page
 \newcommand\ecvfootnote[1]{\def\ecv@rfoot{\textcolor{curious-blue}{#1}}}
@@ -171,10 +171,10 @@
 \pagestyle{fancy}
 \fancyhead{}
 \fancyfoot{}
-\fancyfoot[L]{\begin{minipage}{\ecv@leftcolwidth}
-\begin{flushright}\footnotesize\ecv@lfoot\end{flushright}%
-\end{minipage}
-}
+%\fancyfoot[L]{\begin{minipage}{\ecv@leftcolwidth}
+%\begin{flushright}\footnotesize\ecv@lfoot\end{flushright}%
+%\end{minipage}
+%}
 \fancyfoot[R]{\begin{minipage}{\ecv@rightcolwidth}
 \footnotesize\ecv@rfoot
 \end{minipage}}
@@ -190,13 +190,11 @@
 \newcommand*{\ecvfirstname}[1]{\def\ecv@firstname{#1}} % Deprecated
 \newcommand*{\ecvlastname}[1]{\def\ecv@lastname{#1}} % Deprecated
 \newcommand*{\ecvname}[1]{\def\ecv@name{#1}} % Replaces the above
-\newcommand*{\ecvfootername}[1]{\def\ecv@footername{#1}}
 \newcommand*{\ecvaddress}[1]{\def\ecv@address{#1}}
 \newcommand*{\ecvtelephone}[2][]{\def\ecv@mobile{#2}\def\ecv@telephone{#1}}
 \newcommand*{\ecvemail}[2][]{\def\ecv@emailid{#2}\def\ecv@emailtext{#1}}
 \newcommand*{\ecvlinkedin}[1]{\def\ecv@linkedin{#1}}
 \newcommand*{\ecvgithub}[1]{\def\ecv@github{#1}}
-\newcommand*{\ecvstackoverflow}[1]{\def\ecv@stackoverflow{#1}}
 \newcommand*{\ecvhomepage}[1]{\def\ecv@homepage{#1}}
 \newcommand*{\ecvnationality}[1]{\def\ecv@nationality{#1}}
 \newcommand*{\ecvdateofbirth}[1]{\def\ecv@birth{#1}}
@@ -220,13 +218,12 @@
 \ecvfirstname{}
 \ecvlastname{}
 \ecvname{\ecv@lastname\ \ecv@firstname}
-\ecvfootername{\ecv@name}
+%\ecvfootername{\ecv@name}
 \ecvaddress{}
 \ecvtelephone{}
 \ecvemail{}
 \ecvlinkedin{}
 \ecvgithub{}
-\ecvstackoverflow{}
 \ecvhomepage{}
 \ecvgender{}
 \ecvdateofbirth{}
@@ -265,9 +262,7 @@ $\begin{array}{@{}l}\includegraphics[width=\ecv@iconwidth]{ic_linkedin}\end{arra
 \ifx\@empty\ecv@github\else
 $\begin{array}{@{}l}\includegraphics[width=\ecv@iconwidth]{ic_github}\end{array}$\ecv@github\par\vspace{2pt}
 \fi
-\ifx\@empty\ecv@stackoverflow\else
-$\begin{array}{@{}l}\includegraphics[width=\ecv@iconwidth]{ic_stackoverflow}\end{array}$\ecv@stackoverflow\par\vspace{5pt}
-\fi
+
 \ifx\@empty\ecv@gender
 	\ifx\@empty\ecv@birth
 		\ifx\@empty\ecv@nationality
