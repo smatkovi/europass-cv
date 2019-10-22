@@ -33,7 +33,7 @@ if command -v epstopdf >&/dev/null; then
   for file in *.eps;
   do
     file_name=$(echo "$file" | cut -d '.' -f1 )
-    info "Converting File $index : ${file}\n"
+    info "Converting File $index : ${file}"
     epstopdf "$file" --outfile "$file_name"-eps-converted-to.pdf
   	index=$((index + 1))
   done
