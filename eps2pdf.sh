@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2059
+
+set -eo pipefail
 info()
 {
   printf "➜ %s\n" "$@"
@@ -22,11 +24,12 @@ rm -f ic_*.pdf
 
 count_files=0
 count_files=$(find . -maxdepth 1 -type f -name "*.eps" -exec printf x \; | wc -c)
-info "$count_files EPS files Found"
 
 if [[ $count_files = "0" ]]; then
   error "No eps files found."
   exit 1;
+else
+  success "$count_files EPS files Found"
 fi
 index=1
 if command -v epstopdf >&/dev/null; then
