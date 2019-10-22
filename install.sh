@@ -54,8 +54,7 @@ function copy_files()
 function  change_branch()
 {
   if [ $# -eq 0 ]; then
-    info "No arguments found. Chosing master branch."
-    git checkout master && success "Using master"
+    info "No arguments found. Chosing current branch."
   else
     info "Chosing branch: ${1}"
     git checkout "$1" && success "Done"
