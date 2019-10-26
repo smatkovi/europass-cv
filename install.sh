@@ -26,7 +26,7 @@ function convert_eps_files()
     bash -c "./eps2pdf.sh"
     exit_status=$?
     if [ $exit_status -ne 0 ]; then
-      error "Some error occured."
+      error "Failed to convert eps to pdf"
       exit 2;
     fi
   else
@@ -40,9 +40,30 @@ function copy_files()
   mkdir -p "$TEX_DIR"
   if command -v rsync >&/dev/null; then
     info "Copying files to  ${TEX_DIR}/europass-cv..."
-    rsync -Ea --recursive --exclude='*.md*' --exclude='*.MD*' --exclude='*.git*' --exclude='*.gitignore' --exclude='*.sh' --exclude='*.eps' --exclude europass-cv-compact.cls ./ "${TEX_DIR}/europass-cv" && success "Copied Files"
+    rsync -Ea --recursive --exclude='*.md*' \
+      --exclude='*.MD*' \
+      --exclude='*.git*' \
+      --exclude='*.gitignore' \
+      --exclude='*.sh' \
+      --exclude='*.eps' \
+      --exclude='*.yml' \
+      --exclude='.dependabot' \
+      --exclude='.github' \
+      --exclude='templates' \
+      --exclude europass-cv-compact.cls \
+      ./ "${TEX_DIR}/europass-cv" && success "Copied Files"
     info "Copying files to  ${TEX_DIR}/europass-cv-compact..."
-    rsync -Ea --recursive --exclude='*.md*' --exclude='*.MD*' --exclude='*.git' --exclude='*.gitignore' --exclude='*.sh' --exclude='*.eps' --exclude europass-cv.cls ./ "${TEX_DIR}/europass-cv-compact" && success "Copied Files"
+    rsync -Ea --recursive --exclude='*.md*' \
+      --exclude='*.MD*' \
+      --exclude='*.git*' \
+      --exclude='*.gitignore' \
+      --exclude='*.sh' \
+      --exclude='*.eps' \
+      --exclude='*.yml' \
+      --exclude='.dependabot' \
+      --exclude='.github' \
+      --exclude europass-cv.cls \
+      --exclude europass-cv.cls ./ "${TEX_DIR}/europass-cv-compact" && success "Copied Files"
 
   else
 

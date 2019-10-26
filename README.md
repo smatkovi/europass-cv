@@ -2,11 +2,16 @@
 
 The eu­ropass class is LaTeX im­ple­men­ta­tion of the  (the "Europass CV").
 
+![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/tprasadtp/europass-cv?logo=github)
+![GitHub repo size](https://img.shields.io/github/repo-size/tprasadtp/europass-cv?logo=github&logoColor=white)
+| Action Labels | [![Labels](https://github.com/tprasadtp/europass-cv/workflows/Labels%20Sync/badge.svg)](https://github.com/tprasadtp/europass-cv/actions?workflow=Labels+Sync)
+
+
 ## How to install on Linux
 
 You need `epstopdf` provided by `texlive-font-utils` package for this to work.
 
-```sh
+```console
 git clone https://github.com/tprasadtp/europass-cv.git
 cd europass-cv
 ./install.sh
@@ -16,9 +21,9 @@ cd europass-cv
 > The bash script `install.sh` takes care of converting eps to pdf,
 > installing it in the location and updating the tex database.
 
-## Use
+## Usage
 
-Provides class `europass-cv` and `coveletter`. See examples for more info.
+Provides class `europass-cv`, `europass-cv-compact` and `coveletter`. See `templates/` for more info.
 
 ```tex
 \documentclass[english,logo,notitle,totpages,utf8]{europass-cv}
@@ -47,6 +52,19 @@ bookmarks=false,
 colorlinks=true,
 urlcolor=navyblue]{hyperref}
 ```
+
+> You must include this in your TeX file.
+
+## Docker
+
+Docker images are provided for convinience.
+
+```console
+docker run -it
+```
+
+> UID and GID inside the image are 1000. Keep that in mind when dealing with
+> file ownerships.
 
 ## License
 

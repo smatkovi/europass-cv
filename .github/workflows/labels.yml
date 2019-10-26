@@ -1,0 +1,19 @@
+on:
+  push:
+    branches:
+      - master
+      - dev
+    paths:
+    - '.github/**'
+name: Labels Sync
+jobs:
+  labels:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: sync labels
+      uses: tprasadtp/labels@dev
+      with:
+        owner: "tprasadtp"
+        repo: "europass-cv"
+        token: ${{ secrets.GITHUB_TOKEN }}

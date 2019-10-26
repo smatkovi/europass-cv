@@ -1,10 +1,20 @@
-\documentclass[helvetica,english,logo,notitle,totpages,utf8]{europass-cv}
+\documentclass[helvetica,english,logo,notitle,totpages,utf8]{europass-cv-compact}
 \usepackage{graphicx}
 \usepackage[a4paper,top=1.2cm,left=1.2cm,right=1.2cm,bottom=2.5cm]{geometry}
 \usepackage[english]{babel}
 \usepackage[T1]{fontenc}
 \usepackage{natbib}
 \usepackage{bibentry}
+\usepackage[pdftex,
+pdfauthor={Prasad Tengse},
+pdftitle={Prasad Tengse CV},
+pdfsubject={Resume},
+pdfkeywords={prasad-cv;prasad resume;tengse;resume;tengse cv},
+pdfproducer={Latex with hyperref TeXstudio/Travis},
+pdfcreator={pdflatex},
+bookmarks=false,
+colorlinks=true,
+urlcolor=navyblue]{hyperref}
 
 %[Tutti i campi del CV sono facoltativi. Rimuovere i campi vuoti.]
 \ecvname{Replace with First name(s) Surname(s)}
@@ -28,10 +38,7 @@
 \begin{europecv}
 \ecvpersonalinfo[10pt]
 
-\ecvposition{Job applied for
-Position
-Preferred kob
-Studies applied for}{Replace with job applied for / position / preferred job / studies applied for (delete non relevant headings in left column)}
+\ecvposition{Job/Position/Studies applied for}{Replace with job applied for / position / preferred job / studies applied for (delete non relevant headings in left column)}
 
 \ecvsection{Work experience}
 %[Add separate entries for each experience. Start from the most recent.]
@@ -42,10 +49,10 @@ Studies applied for}{Replace with job applied for / position / preferred job / s
 %[Add separate entries for each course. Start from the most recent.]
 
 \ecveducation{Replace with dates (from - to)}{Replace with qualification awarded}{Replace with education or training organisation’s name and locality (if relevant, country)}{
-Replace with a list of principal subjects covered or skills acquired}{Replace with EQF (or other) level if relevant}
+Replace with a list of principal subjects covered or skills acquired}{Replace with EQF (or other) level if relevant}{}
 
 \ecvsection{Projects}
-\ecvproject{Year/duration}{Title of project}{Byline/place}{More details \par More details}
+\ecvproject{Year/duration}{Title of project}{Byline/place}{More details}{}
 \ecvsection{Personal skills}
 
 \ecvmothertongue[20pt]{Replace with mother tongue(s)}
@@ -64,9 +71,6 @@ good command of quality control processes (currently responsible for quality aud
 good command of Microsoft Office\texttrademark\ tools}
 \ecvitem[10pt]{Other skills}{Replace with other relevant skills not already mentioned. Specify in what context they were acquired. Example:\par
 carpentry}
-
-\ecvitem{Driving licence}{Replace with driving licence category/-ies. Example:\par
-B}
 
 \ecvsection{Additional information}
 
