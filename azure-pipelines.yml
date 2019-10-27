@@ -18,21 +18,71 @@ pr:
 
 variables:
   imageName: 'tprasadtp/europass-cv'
-  DOCKER_BUILDKIT: 1
+  DOCKER_BUILDKIT: 0
 
-pool:
-  vmImage: 'ubuntu-latest'
+jobs:
+- template: .azure/jobs/lint-docekrfiles.yml
 
-steps:
-- task: Docker@2
-  displayName: Build Image
-  inputs:
-    repository: $(imageName)
-    command: build
-    Dockerfile: Dockerfile
+- job:
+  pool:
+    vmImage: 'ubuntu-latest'
+  steps:
+  - script: |
+      sudo apt-get install -y --no-install-recommends jq curl
+      release="$(Build.SourceBranchName)"
+      created_by="$(curl -s https://api.github.com/repos/tprasadtp/europass-cv/releases/tags/${release} | jq --raw-output '.author.login')"
+      if [[ "${created_by}" =~ ^(tprasadtp)$ ]]; then
+        exit 0
+      fi
+      echo "${created_by} is not allowed to create a release!"
+      exit 1
+    displayName: 'Check rights'
+    condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/tags'))
 
+  - script: |
+      if [[ $Build.SourceBranch == "refs/heads/master" ]]; then
+        echo "Branch is master, tag will be set to latest"
+        echo "##vso[task.setvariable variable=dockerTag;isOutput=true]latest"
+      elif [[ $Build.SourceBranch == refs/pull/* ]]; then
+        echo "Pull Request"
+        echo "##vso[task.setvariable variable=dockerTag;isOutput=true]PR"
+      else
+        echo "Branch Build"
+        echo "##vso[task.setvariable variable=dockerTag;isOutput=true]$(Build.SourceBranchName)"
+    name: "DetermineTags"
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+  - script: |
+      docker run --rm -i hadolint/hadolint < Dockerfile
+
+  - task: Docker@2
+    displayName: Build Image
+    inputs:
+      repository: $(imageName)
+      command: build
+      Dockerfile: Dockerfile
+      tags: |
+        $(dockerTag)
+        $(Build.BuildNumber)
+        $(Build.SourceBranchName)
+
+  - script:
+      make docker-test
+    displayName: 'Smoke Test'
+
+  - script: |
+      make docker-show-image
+    displayName: 'show Image Details'
+
+  - task: Docker@2
+    displayName: Login to docker Hub
+    inputs:
+      command: login
+      containerRegistry: DockerHub
+    condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+
+  - task: Docker@2
+    displayName: Push docker images
+    inputs:
+      command: push
+      containerRegistry: DockerHub
+    condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))

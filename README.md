@@ -4,7 +4,6 @@ The eu­ropass class is LaTeX im­ple­men­ta­tion of the  (the "Europass CV")
 
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/tprasadtp/europass-cv?logo=github)
 ![GitHub repo size](https://img.shields.io/github/repo-size/tprasadtp/europass-cv?logo=github&logoColor=white)
-| Action Labels | [![Labels](https://github.com/tprasadtp/europass-cv/workflows/Labels%20Sync/badge.svg)](https://github.com/tprasadtp/europass-cv/actions?workflow=Labels+Sync)
 
 
 ## How to install on Linux
@@ -60,7 +59,7 @@ urlcolor=navyblue]{hyperref}
 Docker images are provided for convinience.
 
 ```console
-docker run -it
+docker run -it -v $(pwd):/home/user/cv:rw -u $UID:$GID tprasadtp/europass-cv
 ```
 
 > UID and GID inside the image are 1000. Keep that in mind when dealing with
@@ -85,4 +84,4 @@ C:\Users\<user name>\Appdata\Local\MikTex\<number>\tex\latex\local\
 * Icons are made by Freepik from www.flaticon.com under [Flaticon Basic License](https://file000.flaticon.com/downloads/license/license.pdf).
 * If for some reason icons do not render, use PNG icons in the png directory.
 
-[![Analytics](https://ga-beacon.prasadt.com/UA-101760811-3/github/europass-cv?flat)](https://prasadt.com/google-analytics-beacon)
+![Analytics](https://ga-beacon.prasadt.com/UA-101760811-3/github/europass-cv?flat)

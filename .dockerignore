@@ -5,3 +5,12 @@
 Dockerfile
 .gitignore
 *.yml
+.azure
+*.aux
+*.pdf
+*.log
+*.gz
+.gitignore
+.dockerignore
+.editorconfig
+Makefile

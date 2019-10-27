@@ -68,7 +68,7 @@ function copy_files()
   else
 
     error "Program rsync is not installed. Please install rsync"
-    errot "This script requires rsync."
+    error "This script requires rsync."
     exit 1
   fi
 }
